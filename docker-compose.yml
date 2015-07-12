@@ -1,0 +1,13 @@
+web:
+  build: .
+  command: node server.js
+  ports:
+    - "8080:8080"
+  links:
+    - db
+  volumes:
+    - .:/code
+db:
+  image: mysql
+  environment:
+    MYSQL_DATABASE: wordpress
