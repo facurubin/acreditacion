@@ -6,25 +6,26 @@ Inscripo = function (pDni,pNom,pApe) {
     this.nombre=pNom;
     this.apellido=pApe;
     this.dni=this.validar_dni(pDni);
+    this.valido=false;
   }
   
   Inscripo.prototype.validar_dni = function(pDni)
   {
-    //pDni=sin_puntos(pDni);  
-    return sin_puntos(pDni);
+    var tem = this.validar(/[0-9]{8}/,sin_puntos(pDni));
+    if(tem!=false)
+      return tem
   }  
 
-
-/************************************
   Inscripo.prototype.validar = function(RegExPattern,campo)
   {
     if ((campo.match(RegExPattern)) && (campo.value!='')) {
+        this.valido=true;
         return campo; 
     } else {
+        this.valido=false;     
         return false;
     } 
   }
-*************************************/
 
 
 /**  
