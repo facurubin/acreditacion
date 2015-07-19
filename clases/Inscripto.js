@@ -11,14 +11,17 @@ Inscripo = function (pDni,pNom,pApe) {
   
   Inscripo.prototype.validar_dni = function(pDni)
   {
-    var tem = this.validar(/[0-9]{8}/,sin_puntos(pDni));
-    if(tem!=false)
-      return tem
+    
+    var tem = sin_puntos(pDni);
+
+    tem=this.validar(/^[0-9]{8}$/,tem);
+    
+    return tem;
   }  
 
-  Inscripo.prototype.validar = function(RegExPattern,campo)
+  Inscripo.prototype.validar = function(formato,campo)
   {
-    if ((campo.match(RegExPattern)) && (campo.value!='')) {
+    if ((campo.match(formato)) && (campo.value!='')) {
         this.valido=true;
         return campo; 
     } else {
@@ -37,7 +40,4 @@ var sin_puntos = function(pDni)
     return pDni.replace(/[\.]/g,'');
   }
  
-
-
-  
 module.exports = Inscripo;

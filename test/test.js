@@ -14,4 +14,12 @@ describe('Deberia validar el parametro Dni',function(){
     expect(juan.dni).to.equal('34240320');
   
   });
+
+  it('Deberia devolver fallar si el dni es menor a 8 char',
+  	function()
+  	{
+  		var juan = new Inscripto('12.345.678.9','Juan','Perez');
+  		expect(juan.dni).to.equal(false);	
+  		expect(juan.valido).to.equal(false);					
+  	});
 });
