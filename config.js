@@ -1,4 +1,4 @@
 module.exports =
 {
-	puerto : ENV.PORT || 8080
+	puerto : 8080
 };

@@ -1,12 +1,18 @@
 var express = require('express'),
 	conf	= require('./config');
 
-
-// App
 var app = express();
-app.get('/', function (req, res) {
-  res.send('Hello world\n');
+
+app.use(express.static(__dirname + '/public'));
+
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+
+app.get('/', function(req, res) {
+  res.render('inscripcion')
 });
 
-app.listen(conf.puerto);
+
+app.listen(process.env.PORT || conf.puerto);
 console.log('Servidor corriendo en http://localhost:' + conf.puerto);
