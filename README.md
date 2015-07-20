@@ -8,12 +8,19 @@
 
 ###Crea un inscripto
 * Metodo: POST  
-* Ruta: /api/v1/inscriptos/
+* Ruta: /api/v1/inscripto/
 
-###Crea un inscripto
+###Actializa un inscripto por dni
 * Metodo: PUT   
-* Ruta: /api/v1/inscriptos/:dni
+* Ruta: /api/v1/inscripto/:dni
 
-###Crea un inscripto
+###Borra un inscripto por dni
 * Metodo: DELETE 
-* Ruta: /api/v1/inscriptos/:dni
+* Ruta: /api/v1/inscripto/:dni
+
+
+###Inscripto
+* dni (8 caracteres 0-9)
+* nombre (3 a 10 caracteres a-z)
+* apelido (3 a 10 caracteres a-z)
+* valido (bandera de validacion)
