@@ -1,14 +1,15 @@
-var mysql = require('mysql');
+var mysql = require('mysql'),
+	conf  = require('./../config')
 /**************************************
 
 Clase de conexion de mysql
 
 ***************************************/
-Db = function (p_db,p_usuario,p_contraseña,p_host) {
-	this.db=p_db;
-	this.usuario=p_usuario;
-	this.contraseña=p_contraseña;
-	this.host=p_host;
+Db = function () {
+	this.db=conf.db;
+	this.usuario=conf.usuario;
+	this.contraseña=conf.contraseña;
+	this.host=conf.host;
 	this.connection=null;
 }
 
@@ -21,7 +22,6 @@ Db.prototype.conectar = function() {
 	});
 	connection.connect();
 };
-
 Db.prototype.consulta = function(sql) {
 	connection.query(sql, function(err, rows, fields) {
   	if (err) throw err;
