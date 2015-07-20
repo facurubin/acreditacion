@@ -1,5 +1,7 @@
 var mysql = require('mysql'),
-	conf  = require('./../config')
+	conf  = require('./../config'),
+	Inscripto = require('./Inscripto');
+
 /**************************************
 
 Clase de conexion de mysql
@@ -38,5 +40,37 @@ Db.prototype.cerrar = function()
 	this.connection.end();
 };	
 
+/************************************
+Metodos para relacionados con inscripto
+**************************************/
+
+Db.prototype.Agreguar_inscripto = function(p_dni,p_nombre,p_apellido)
+{
+	db.consulta('',function(res) {
+		console.log(res);
+	});
+};	
+
+Db.prototype.Actualizar_inscripto = function(p_dni,p_nombre,p_apellido)
+{
+	db.consulta('',function(res) {
+		console.log(res);
+	});
+};
+
+
+Db.prototype.Eliminar_inscripto = function(p_dni,p_nombre,p_apellido)
+{
+	db.consulta('',function(res) {
+		console.log(res);
+	});
+};
+
+Db.prototype.Obetener_inscriptos = function(p_dni,p_nombre,p_apellido)
+{
+	db.consulta('',function(res) {
+		console.log(res);
+	});
+};
 
 module.exports=Db;
