@@ -1,5 +1,4 @@
 var mysql = require('mysql'),
-	conf  = require('./../config'),
 	Inscripto = require('./Inscripto');
 
 /**************************************
@@ -7,14 +6,14 @@ var mysql = require('mysql'),
 Clase de conexion de mysql
 
 ***************************************/
-Db = function () {
+Db = function (conf) {
 	this.connection=null;
 	this.dato=null
 	this.connection = mysql.createConnection({
-	  host     : conf.host,
-	  user     : conf.usuario,
-	  password : conf.contraseña,
-	  database : conf.db
+	  host     : conf.host || 'localhost',
+	  user     : conf.usuario || 'root',
+	  password : conf.contraseña|| '',
+	  database : conf.db || 'teyet'
 	});
 
 	

@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 /**************************
 Probando mysql
 ***************************/
-var db = new Db();
+var db = new Db(conf);
 db.consulta('SHOW tables;',function(res) {
 	console.log(res);
 });
