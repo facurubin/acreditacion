@@ -18,10 +18,9 @@ app.get('/', function(req, res) {
 Probando mysql
 ***************************/
 var db = new Db();
-var datos = db.consulta('SHOW tables;');
-debugger;
-db.cerrar();
-console.log(datos);
+db.consulta('SHOW tables;',function(res) {
+	console.log(res);
+});
 /**************************
 
 ***************************/

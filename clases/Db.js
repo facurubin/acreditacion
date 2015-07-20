@@ -7,7 +7,7 @@ Clase de conexion de mysql
 ***************************************/
 Db = function () {
 	this.connection=null;
-
+	this.dato=null
 	this.connection = mysql.createConnection({
 	  host     : conf.host,
 	  user     : conf.usuario,
@@ -16,20 +16,21 @@ Db = function () {
 	});
 
 	
-	this.connection.connect();
+	this.connection.connect(function(err) {
+      if (err) throw err;
+   });
 }
 
 
-Db.prototype.consulta = function(sql) 
+Db.prototype.consulta = function(sql,callback) 
 {
-	var data=this.connection.query(sql, function(err, rows, fields) 
+	var datos=null;
+	this.connection.query(sql, function(err, rows, fields) 
 	{
-	  	if (err) throw err;
-	  	{
-	  		return rows;
-	  	}
+	  	if (err)throw err;
+		callback(rows);
 	});
-	return data;
+	this.cerrar();
 };
 
 Db.prototype.cerrar = function()
