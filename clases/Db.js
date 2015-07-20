@@ -6,31 +6,36 @@ Clase de conexion de mysql
 
 ***************************************/
 Db = function () {
-	this.db=conf.db;
-	this.usuario=conf.usuario;
-	this.contraseña=conf.contraseña;
-	this.host=conf.host;
 	this.connection=null;
+
+	this.connection = mysql.createConnection({
+	  host     : conf.host,
+	  user     : conf.usuario,
+	  password : conf.contraseña,
+	  database : conf.db
+	});
+
+	
+	this.connection.connect();
 }
 
-Db.prototype.conectar = function() {
-	connection = mysql.createConnection({
-	  host     : this.host,
-	  user     : this.usuariou,
-	  password : this.contraseña,
-	  database : this.db
+
+Db.prototype.consulta = function(sql) 
+{
+	var data=this.connection.query(sql, function(err, rows, fields) 
+	{
+	  	if (err) throw err;
+	  	{
+	  		return rows;
+	  	}
 	});
-	connection.connect();
+	return data;
 };
-Db.prototype.consulta = function(sql) {
-	connection.query(sql, function(err, rows, fields) {
-  	if (err) throw err;
-  	return rows;
-});
 
 Db.prototype.cerrar = function()
 {
-	connection.end();
-}	
+	this.connection.end();
+};	
 
-};
+
+module.exports=Db;
