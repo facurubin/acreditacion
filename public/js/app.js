@@ -87,13 +87,13 @@ app.controller('InscripcionCtr',['$scope','$http',function($scope,$http)
 		getInscriptos();
  
 		function getInscriptos(){  
-			$http.get("../procesos/inscriptos.php").success(function(data){
+			$http.get("/api/v1/inscriptos").success(function(data){
 				$scope.inscriptos = data;
 			});
-			$http.get("../procesos/get_universidades.php").success(function(data){
+			$http.get("/api/v1/universidades").success(function(data){
 				$scope.universidades = data;
 			});
-			$http.get("../procesos/get_localidades.php").success(function(data){
+			$http.get("/api/v1/localidades").success(function(data){
 				$scope.localidades = data;
 			});
 		}
@@ -143,13 +143,13 @@ app.controller('InscripcionCtr',['$scope','$http',function($scope,$http)
 		}
 		function mensaje(ins)
 		{
-			$scope.detalleRegistro="Registado por "+ins.detalle;
+			$scope.detalleRegistro="Registado por "+ins.apellido+", "+ins.nombre;
 			return false;
 		}
 		$scope.enviar = function(){
 			
 			if($scope.valido==true){
-			$http.post('../procesos/inscribir.php', 
+			$http.post('/api/v1/inscriptos', 
 			{
 				email:$scope.email,
 				nya:$scope.nya,

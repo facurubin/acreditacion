@@ -15,14 +15,33 @@ app.get('/', function(req, res) {
 });
 
 /**************************
-Probando mysql
+    Rutas Api 
 ***************************/
-var db = new Db(conf);
+//Datos de prueba
+var prueba = require('./datos_de_prueba');
+
+//Todas los inscriptos
+app.get('/api/v1/inscriptos', function(req, res) {
+  res.json(prueba.inscriptos);
+});
+
+//Todas las universiades
+app.get('/api/v1/universidades', function(req, res) {
+  res.json(prueba.universidades);
+});
+
+//Todas las localidades
+app.get('/api/v1/localidades', function(req, res) {
+  res.json(prueba.localidades);
+});
+
+/**************************
+//Probando mysql
+
+ db = new Db(conf);
 db.consulta('SHOW tables;',function(res) {
 	console.log(res);
 });
-/**************************
-
 ***************************/
 
 app.listen(process.env.PORT || conf.puerto);
