@@ -2,9 +2,10 @@
   "name": "acreditacion",
   "version": "0.0.1",
   "description": "Sistema de acreditacion para evento en node con persistencia en mysql",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "./node_modules/mocha/bin/mocha",
+    "dev": "node ./node_modules/supervisor/lib/cli-wrapper.js --debug server.js"
   },
   "author": "",
   "license": "MIT",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "chai": "^3.1.0",
     "chai-as-promised": "^5.1.0",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "supervisor": "^0.7.1"
   }
 }
